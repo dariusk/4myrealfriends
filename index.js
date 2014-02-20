@@ -114,7 +114,7 @@ function tweet() {
   });
 }
 
-// Tweet every 60 minutes
+// Tweet every 2 hours
 setInterval(function () {
   try {
     tweet();
@@ -122,7 +122,7 @@ setInterval(function () {
   catch (e) {
     console.log(e);
   }
-}, 1000 * 60 * 60);
+}, 1000 * 60 * 60 * 2);
 
 // Tweet once on initialization
 tweet();
