@@ -62,8 +62,7 @@ function generate() {
   });
   */
   // A B for my C friends, C B for my A friends
-  var word = ['enemies','friends','heroes','lover','people','folks','boss','dogs','cats'].pick(), A = 'real', B = '', C = '';
-  word = 'cats';
+  var word = ['enemies','friends','heroes','lover','people','folks','boss','dogs','cats'].pick(), A = 'real', B = 'pain', C = '';
   getBigrams(word).done(function(data) {
     // filter so we only have results where word is the 2nd gram and gram1 is adj
     data = _.filter(data, function(el) {
@@ -78,7 +77,9 @@ function generate() {
       data = _.filter(data, function(el) {
         return el.gram1 === C && getPos(el.gram2).indexOf('NN') > -1 && el.gram2 !== word;
       });
-      B = data.pick().gram2;
+      if (data.length > 0) {
+        B = data.pick().gram2;
+      }
       console.log(B);
       getBigrams(B).done(function(data) {
         // filter so we only have results where B is the 2nd gram and gram1 is adj,
